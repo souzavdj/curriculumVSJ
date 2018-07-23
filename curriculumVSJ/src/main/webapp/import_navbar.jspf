@@ -1,11 +1,12 @@
 <%@include file="import_head.jspf"%>
 <!--Navbar-->
+<%--<img src="Imagens/premioas.jpg" width="100%" height=150px" alt=""/>--%>
+
 <nav class="navbar navbar-expand-lg navbar-dark cyan darken-3">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">
-        <img src="/media/vinicius/Meus arquivos/workspace/workspace NetBeans/curriculumVSJ/src/main/resources/Imagens/logoCurriculum.png"
-		width="60" alt=""/>
+    <a class="navbar-brand" href="HomePage.jsp">
+        <img src ="Imagens/eu.jpeg" width="60px" alt=""/>
     </a>
 
     <!-- Collapse button -->
@@ -20,43 +21,44 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home
+                <a class="nav-link" href="HomePage.jsp"><fmt:message key="br.com.curriculumVSJ.import_navbar.home"/>
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-
-            <!-- Dropdown -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><fmt:message key="br.com.curriculumVSJ.import_navbar.projects"/></a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.lubras"/></a>
+                    <a class="dropdown-item" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.bathroomConscious"/></a>
+                    <a class="dropdown-item" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.agentTransport"/></a>
                 </div>
             </li>
-
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.publications"/></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.contact"/></a>
+            </li>
+            
         </ul>
+        
         <!-- Links -->
-
         <form class="form-inline">
             <div class="md-form my-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2" type="text" placeholder="<fmt:message key="br.com.curriculumVSJ.import_navbar.search"/>" aria-label="<fmt:message key="br.com.curriculumVSJ.import_navbar.search"/>">
             </div>
         </form>
         
-        <c:choose>
-            <c:when test="${ lang eq 'en_US' }">
-                <a href="?lang=pt_BR"><fmt:message key = "br.com.curriculumVSJ.import_navbar.portuguese"/></a>
-            </c:when>
-            <c:otherwise>
-                <a href="?lang=en_US"><fmt:message key = "br.com.curriculumVSJ.import_navbar.english"/></a>
-            </c:otherwise>
-        </c:choose>
+        <ul class="navbar-nav">
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><fmt:message key="br.com.curriculumVSJ.import_navbar.language"/></a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="?lang=pt_BR"><fmt:message key = "br.com.curriculumVSJ.import_navbar.portuguese"/></a>
+                    <a class="dropdown-item" href="?lang=en_US"><fmt:message key = "br.com.curriculumVSJ.import_navbar.english"/></a>
+                </div>
+            </li>
+        </ul>
     </div>
 </nav>

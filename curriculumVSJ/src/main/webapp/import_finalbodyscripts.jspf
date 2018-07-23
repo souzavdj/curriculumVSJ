@@ -1,7 +1,11 @@
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="node_modules/bootstrap/js/jquery-3.2.1.slim.min.js" ></script>
-    <script src="node_modules/bootstrap/js/popper.min.js" ></script>
-    <script src="node_modules/bootstrap/js/bootstrap.min.js" ></script>
-    <script type="text/javascript" src="node_modules/bootstrap/js/jquery-3.1.1.min.js"></script>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="node_modules/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="node_modules/bootstrap/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="node_modules/bootstrap/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
     <script type="text/javascript" src="node_modules/bootstrap/js/mdb.min.js"></script>
