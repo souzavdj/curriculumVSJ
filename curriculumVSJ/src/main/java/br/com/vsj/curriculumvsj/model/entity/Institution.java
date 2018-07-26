@@ -5,32 +5,34 @@
  */
 package br.com.vsj.curriculumvsj.model.entity;
 
+import java.util.List;
+
 /**
- * Classe modelo para os Autores
+ * Classe modelo para as instituições.
  * @author vinicius
- * @version 1.1
+ * @version 1.0
  */
-public class Author {
+public class Institution {
     
     private String name;
     
-    private Institution institution;
+    private String department;
     
     private String email;
     
-    private String phone;
-    
     private Address address;
+    
+    private List<String> phones;
 
-    public Author() {
+    public Institution() {
     }
 
-    public Author(String name, Institution institution, String email, String phone, Address address) {
+    public Institution(String name, String department, String email, Address address, List<String> phones) {
         this.name = name;
-        this.institution = institution;
+        this.department = department;
         this.email = email;
-        this.phone = phone;
         this.address = address;
+        this.phones = phones;
     }
 
     public String getName() {
@@ -41,12 +43,12 @@ public class Author {
         this.name = name;
     }
 
-    public Institution getInstitution() {
-        return institution;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setInstitution(Institution institution) {
-        this.institution = institution;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public String getEmail() {
@@ -57,20 +59,20 @@ public class Author {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public Address getAddress() {
         return address;
     }
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<String> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<String> phones) {
+        this.phones = phones;
     }
     
 }

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Classe modelo para as publicações.
  * @author vinicius
- * @version 1.0
+ * @version 1.1
  */
 public class Publication {
     
@@ -23,14 +23,14 @@ public class Publication {
     
     private String DOI;
     
-    private String Local;
+    private Address Local;
     
     private File file;
 
     public Publication() {
     }
 
-    public Publication(String title, List<Author> authors, Date publicationDate, PublicationType type, String conference, String DOI, String Local, File file) {
+    public Publication(String title, List<Author> authors, Date publicationDate, PublicationType type, String conference, String DOI, Address Local, File file) {
         this.title = title;
         this.authors = authors;
         this.publicationDate = publicationDate;
@@ -89,11 +89,11 @@ public class Publication {
         this.DOI = DOI;
     }
 
-    public String getLocal() {
+    public Address getLocal() {
         return Local;
     }
 
-    public void setLocal(String Local) {
+    public void setLocal(Address Local) {
         this.Local = Local;
     }
 
