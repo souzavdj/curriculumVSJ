@@ -6,7 +6,7 @@
 
     <!-- Navbar brand -->
     <a class="navbar-brand" href="HomePage.jsp">
-        <img src ="Imagens/eu.jpeg" width="60px" alt=""/>
+        <img src ="Imagens/eu.jpeg" width="100px" height="100px" alt=""/>
     </a>
 
     <!-- Collapse button -->
@@ -24,6 +24,9 @@
                 <a class="nav-link" href="HomePage.jsp"><fmt:message key="br.com.curriculumVSJ.import_navbar.home"/>
                     <span class="sr-only">(current)</span>
                 </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Turing.jsp"><fmt:message key="br.com.curriculumVSJ.import_navbar.turing"/></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><fmt:message key="br.com.curriculumVSJ.import_navbar.projects"/></a>
@@ -44,13 +47,13 @@
         </ul>
         
         <!-- Links -->
-        <form class="form-inline">
+        <form class="form-inline col-md-2">
             <div class="md-form my-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="<fmt:message key="br.com.curriculumVSJ.import_navbar.search"/>" aria-label="<fmt:message key="br.com.curriculumVSJ.import_navbar.search"/>">
             </div>
         </form>
         
-        <ul class="navbar-nav">
+        <ul class="navbar-nav col-sm-1">
             <!-- Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><fmt:message key="br.com.curriculumVSJ.import_navbar.language"/></a>
