@@ -5,9 +5,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark cyan darken-3">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="HomePage.jsp">
-        <img src ="Imagens/eu.jpeg" width="100px" height="100px" alt=""/>
-    </a>
+    <core:choose>
+        <core:when test="${sessionScope.login}">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src ="Imagens/eu.jpeg" width="100px" height="100px" alt=""/></a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="LoginServlet?logout=true"><fmt:message key="br.com.curriculumVSJ.Login.button.logout"/></a>
+                    </div>
+                </li>
+            </ul>
+        </core:when>
+        <core:otherwise>
+            <a class="navbar-brand" href="HomePage.jsp">
+                <img src ="Imagens/eu.jpeg" width="100px" height="100px" alt=""/>
+            </a>
+        </core:otherwise>
+    </core:choose>
 
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
@@ -37,6 +51,19 @@
                 </div>
             </li>
             
+            <core:choose>
+                <core:when test="${sessionScope.login}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><fmt:message key="br.com.curriculumVSJ.import_navbar.register"/></a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.register.institution"/></a>
+                            <a class="dropdown-item" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.register.author"/></a>
+                            <a class="dropdown-item" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.register.publication"/></a>
+                        </div>
+                    </li>
+                </core:when>
+            </core:choose>
+                    
             <li class="nav-item">
                 <a class="nav-link" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.publications"/></a>
             </li>
@@ -48,7 +75,15 @@
             
         <ul class="navbar-nav col-sm-auto">
             <li class="nav-item">
-                <a class="nav-link" href="Login.jsp"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block"><fmt:message key="br.com.curriculumVSJ.import_navbar.login"/></span></a>
+                    <core:choose>
+                        <core:when test="${sessionScope.login}">
+                            <a class="nav-link" href="LoginServlet?logout=true"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block"><fmt:message key="br.com.curriculumVSJ.import_navbar.logout"/>
+                        </core:when>
+                        <core:otherwise>
+                            <a class="nav-link" href="Login.jsp"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block"><fmt:message key="br.com.curriculumVSJ.import_navbar.login"/>
+                        </core:otherwise>
+                    </core:choose>
+                </span></a>
             </li>
         </ul>
             

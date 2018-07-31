@@ -17,14 +17,36 @@
         <h1 align="center"><b><fmt:message key="br.com.curriculumVSJ.Login.title"/></b></h1>
         <br>
         <!-- Default form login -->
-        <form class="text-center border border-light p-5">
+        <form action="LoginServlet" method="POST" class="text-center border border-light p-5">
             <div align="center">
                 <!-- Email -->
-                <input type="email" id="defaultLoginFormEmail" class="form-control mb-4 col-md-5" placeholder="<fmt:message key="br.com.curriculumVSJ.Login.label.email"/>">
-                
+                <div>
+                    <input type="email" id="defaultLoginFormEmail" name="email" value="${param.email}" class="form-control mb-4 col-md-5 ${requestScope.emailIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Login.label.email"/>">
+                    <div class="invalid-feedback">
+                        <core:choose>
+                            <core:when test="${requestScope.msgErrEmailInCorrect}">
+                                <fmt:message key="br.com.curriculumVSJ.Login.valid.email.incorrect"/>
+                            </core:when>
+                            <core:otherwise>
+                                <fmt:message key="br.com.curriculumVSJ.Login.valid.email.invalid"/>
+                            </core:otherwise>
+                        </core:choose>
+                    </div>
+                </div>
                 <!-- Password -->
-                <input type="password" id="defaultLoginFormPassword" class="form-control mb-4 col-md-5" placeholder="<fmt:message key="br.com.curriculumVSJ.Login.label.password"/>">
-
+                <div>
+                    <input type="password" id="defaultLoginFormPassword" name="password" class="form-control mb-4 col-md-5 ${requestScope.passwordIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Login.label.password"/>" required>
+                    <div class="invalid-feedback">
+                        <core:choose>
+                            <core:when test="${requestScope.msgErrPasswordInCorrect}">
+                                <fmt:message key="br.com.curriculumVSJ.Login.valid.password.incorrect"/>
+                            </core:when>
+                            <core:otherwise>
+                                <fmt:message key="br.com.curriculumVSJ.Login.valid.password.invalid"/>
+                            </core:otherwise>
+                        </core:choose>
+                    </div>
+                </div>
                 <!-- Login button -->
                 <button class="btn btn-info btn-block my-10 col-md-5" type="submit"><fmt:message key="br.com.curriculumVSJ.Login.button.login"/></button>
             </div>

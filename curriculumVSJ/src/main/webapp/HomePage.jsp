@@ -16,7 +16,9 @@
         <%@include file="import_navbar.jspf"%>
         
         <h1>Home</h1>
-        
+        <core:if test="${sessionScope.login}">
+            <br><br><br>Logado<br><br><br>
+        </core:if>
         <%@include file="import_footer.jspf"%>
         <%@include file="import_finalbodyscripts.jspf"%>
     </body>
