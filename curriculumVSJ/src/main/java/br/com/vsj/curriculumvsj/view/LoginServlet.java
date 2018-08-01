@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("email");
+        String email = req.getParameter("emai");
         String password = req.getParameter("password");
         boolean valid = true;
         Locale locale = ServletUtils.getLocale(req);
