@@ -43,4 +43,34 @@ public class ValidUtils {
         }
         return valid;
     }
+    
+    public static boolean validFieldEmpty (String field) {
+        boolean valid = false;
+        if (!field.isEmpty()) {
+            valid = true;
+        }
+        return valid;
+    }
+    
+    public static boolean validFieldIsNumberInteger (String field) {
+        boolean valid = false;
+        try {
+            int integer = Integer.parseInt(field);
+            valid = true;
+        }catch (NumberFormatException n) {
+            valid = false;
+        }
+        return valid;
+    }
+    
+    public static boolean validFieldIsNumberDouble (String field) {
+        boolean valid = false;
+        try {
+            double integer = Double.parseDouble(field);
+            valid = true;
+        }catch (NumberFormatException n) {
+            valid = false;
+        }
+        return valid;
+    }
 }

@@ -5,33 +5,50 @@
  */
 package br.com.vsj.curriculumvsj.model.entity;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Classe modelo para os endereços.
  * @author vinicius
  * @version 1.0
  */
-public class Address {
+@Entity
+public class Address implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @Column(length = 8, nullable = false, unique = true)
     private String zipCode;
     
-    private String number;
+    @Column(nullable = false)
+    private int number;
     
+    @Column(nullable = false)
     private String street;
     
+    @Column(nullable = true)
     private String complement;
     
+    @Column(nullable = false)
     private String neighborhood;
     
+    @Column(nullable = false)
     private String city;
     
+    @Column(nullable = false)
     private String state;
     
+    @Column(nullable = false)
     private String country;
 
     public Address() {
     }
 
-    public Address(String zipCode, String number, String street, String complement, String neighborhood, String city, String state, String country) {
+    public Address(String zipCode, int number, String street, String complement, String neighborhood, String city, String state, String country) {
         this.zipCode = zipCode;
         this.number = number;
         this.street = street;
@@ -50,11 +67,11 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 

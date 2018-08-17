@@ -56,7 +56,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><fmt:message key="br.com.curriculumVSJ.import_navbar.register"/></a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.register.institution"/></a>
+                            <a class="dropdown-item" href="Form_Institution.jsp"><fmt:message key="br.com.curriculumVSJ.import_navbar.register.institution"/></a>
                             <a class="dropdown-item" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.register.author"/></a>
                             <a class="dropdown-item" href="#"><fmt:message key="br.com.curriculumVSJ.import_navbar.register.publication"/></a>
                         </div>

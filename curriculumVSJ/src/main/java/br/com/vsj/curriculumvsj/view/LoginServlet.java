@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("emai");
+        String email = req.getParameter("email");
         String password = req.getParameter("password");
         boolean valid = true;
         Locale locale = ServletUtils.getLocale(req);
@@ -45,19 +45,20 @@ public class LoginServlet extends HttpServlet {
         if (!ValidUtils.validEmail(email)) {
             valid = false;
             req.setAttribute("emailIsValid", "is-invalid");
-            
+            req.setAttribute("emailMsgError", messages.getString("br.com.curriculumVSJ.Login.valid.email.invalid"));
         }else if (!ValidUtils.validEmailCorrect(email)){
             valid = false;
             req.setAttribute("emailIsValid", "is-invalid");
-            req.setAttribute("msgErrEmailInCorrect", true);
+            req.setAttribute("emailMsgError", messages.getString("br.com.curriculumVSJ.Login.valid.email.incorrect"));
         }
         if (!ValidUtils.validPassword(password)) {
             valid = false;
             req.setAttribute("passwordIsValid", "is-invalid");
+            req.setAttribute("passwordMsgError", messages.getString("br.com.curriculumVSJ.Login.valid.password.invalid"));
         }else if (!ValidUtils.validPasswordCorrect(password)) {
             valid = false;
             req.setAttribute("passwordIsValid", "is-invalid");
-            req.setAttribute("msgErrPasswordInCorrect", true);
+            req.setAttribute("passwordMsgError", messages.getString("br.com.curriculumVSJ.Login.valid.password.incorrect"));
         }
         if (valid) {
             req.getSession().removeAttribute("login");
