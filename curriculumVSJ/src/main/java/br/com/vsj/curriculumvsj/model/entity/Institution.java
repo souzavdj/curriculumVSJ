@@ -5,29 +5,49 @@
  */
 package br.com.vsj.curriculumvsj.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * Classe modelo para as instituições.
  * @author vinicius
  * @version 1.0
  */
-public class Institution {
+@Entity
+public class Institution implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue
+    private int id;
+    
+    @Column(nullable = false)
     private String name;
     
+    @Column(nullable = false)
     private String department;
     
+    @Column(nullable = false)
     private String email;
     
+    @OneToOne(mappedBy = "institution")
     private Address address;
     
-    private List<String> phones;
+    @Column(nullable = false)
+    @OneToMany(mappedBy = "institution")
+    private List<Phone> phones;
 
     public Institution() {
     }
 
-    public Institution(String name, String department, String email, Address address, List<String> phones) {
+    public Institution(String name, String department, String email, Address address, List<Phone> phones) {
         this.name = name;
         this.department = department;
         this.email = email;
@@ -35,6 +55,14 @@ public class Institution {
         this.phones = phones;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getName() {
         return name;
     }
@@ -67,11 +95,11 @@ public class Institution {
         this.address = address;
     }
 
-    public List<String> getPhones() {
+    public List<Phone> getPhones() {
         return phones;
     }
 
-    public void setPhones(List<String> phones) {
+    public void setPhones(List<Phone> phones) {
         this.phones = phones;
     }
     

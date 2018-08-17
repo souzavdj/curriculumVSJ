@@ -6,12 +6,16 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 <persistence-unit name="curriculumVSJPU" transaction-type="RESOURCE_LOCAL">
 <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 <properties>
-	<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-	<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/curriculumVSJDB"/>
-	<property name="javax.persistence.jdbc.user" value="root"/>
-	<property name="javax.persistence.jdbc.password" value="gude0718"/>
-	<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-	<property name="hibernate.hbm2ddl.auto" value="update"/>
+
+    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/curriculumVSJDB"/>
+    <property name="javax.persistence.jdbc.user" value="root"/>
+    <property name="javax.persistence.jdbc.password" value="gude0718"/>
+
+    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+    <property name="hibernate.format_sql" value="true"/>
+    <property name="hibernate.hbm2ddl.auto" value="update"/>
+
 </properties>
 </persistence-unit>
 </persistence>

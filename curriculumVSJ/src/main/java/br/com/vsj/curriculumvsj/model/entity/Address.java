@@ -8,7 +8,10 @@ package br.com.vsj.curriculumvsj.model.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * Classe modelo para os endereços.
@@ -21,7 +24,10 @@ public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @Column(length = 8, nullable = false, unique = true)
+    @GeneratedValue
+    private int id;
+    
+    @Column(length = 9, nullable = false)
     private String zipCode;
     
     @Column(nullable = false)
@@ -44,6 +50,9 @@ public class Address implements Serializable {
     
     @Column(nullable = false)
     private String country;
+    
+    @OneToOne(fetch = FetchType.EAGER)
+    private Institution institution;
 
     public Address() {
     }
@@ -59,6 +68,14 @@ public class Address implements Serializable {
         this.country = country;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getZipCode() {
         return zipCode;
     }

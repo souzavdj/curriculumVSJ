@@ -15,7 +15,15 @@
         <%@include file="import_navbar.jspf"%>
         <br>
         <h1 class="col-sm-auto" align="center"><b><fmt:message key="br.com.curriculumVSJ.Form_Institution.title"/></b></h1>
-        
+        <core:if test="${not empty msgSuccess}">
+            <hr>
+            <br>
+            <div class="text-center alert alert-success" role="alert">
+                ${ msgSuccess }
+            </div>
+            <br>
+            <hr>
+        </core:if>
         <form class="text-center border border-light p-5" action="FormInstitutionServlet" method="POST">
             
             <div align="center">

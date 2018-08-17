@@ -5,8 +5,12 @@
  */
 package br.com.vsj.curriculumvsj.view;
 
+import br.com.vsj.curriculumvsj.control.AddressController;
+import br.com.vsj.curriculumvsj.control.InstitutionController;
+import br.com.vsj.curriculumvsj.control.PhoneController;
 import br.com.vsj.curriculumvsj.model.entity.Address;
 import br.com.vsj.curriculumvsj.model.entity.Institution;
+import br.com.vsj.curriculumvsj.model.entity.Phone;
 import br.com.vsj.curriculumvsj.utils.ServletUtils;
 import br.com.vsj.curriculumvsj.utils.ValidUtils;
 import java.io.IOException;
@@ -20,6 +24,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.log4j.Logger;
 
 /**
  * Classe Servlet para o controle de cadastro de Instituições
@@ -155,9 +160,22 @@ public class FormInstitutionServlet extends HttpServlet {
         
         if (valid) {
             Address address = new Address(zipCode, Integer.parseInt(number), street, complement, neighborhood, city, stage, country);
-            List<String> phones = new ArrayList<String>();
-            phones.add(phone);
+            List<Phone> phones = new ArrayList();
+            Phone phoneClass = new Phone(phone);
+            phones.add(phoneClass);
             Institution institution = new Institution(name, department, email, address, phones);
+            try{
+                PhoneController.insertPhone(phoneClass);
+                String msg = messages.getString("br.com.curriculumVSJ.Form_Institution.msg.success");
+                req.setAttribute("msgSuccess", msg);
+                req.getRequestDispatcher("/Form_Institution.jsp").forward(req, resp);			
+            }catch(Exception e) {
+                Logger lg = Logger.getLogger(FormInstitutionServlet.class);
+                lg.error("Exceção ao tentar inserir a Instituição", e);
+                req.setAttribute("error", e);
+                req.setAttribute("msgError", e.getStackTrace());
+                req.getRequestDispatcher("Error.jsp").forward(req, resp);			
+            }
             req.getRequestDispatcher("HomePage.jsp").forward(req, resp);
         }else {
             req.getRequestDispatcher("Form_Institution.jsp").forward(req, resp);
