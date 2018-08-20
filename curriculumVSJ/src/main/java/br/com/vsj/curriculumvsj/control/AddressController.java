@@ -30,14 +30,15 @@ public class AddressController {
 
     public static void insertAddress(Address address) {
         GenericDAO<Address> addressDAO = PersistenceManager.createGenericDAO(Address.class);
-        PersistenceManager.getTransaction().begin();
         try {
+            PersistenceManager.getTransaction().begin();
             addressDAO.insert(address);
             PersistenceManager.getTransaction().commit();
         } catch (Exception e) {
             Logger lg = Logger.getLogger(AddressController.class);
             lg.error("Exceção ao tentar incluir Endereço. ", e);
             PersistenceManager.getTransaction().rollback();
+            throw e;
         }
     }
 
@@ -52,6 +53,7 @@ public class AddressController {
             Logger lg = Logger.getLogger(Address.class);
             lg.error("Exceção ao tentar alterar Endereço. ", e);
             PersistenceManager.getTransaction().rollback();
+            throw e;
         }
 
     }

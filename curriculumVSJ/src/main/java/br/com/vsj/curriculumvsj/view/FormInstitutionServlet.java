@@ -48,7 +48,7 @@ public class FormInstitutionServlet extends HttpServlet {
         String stage = req.getParameter("stage");
         String country = req.getParameter("country");
         boolean valid = true;
-        Locale locale = ServletUtils.getLocale(req);
+        Locale locale = ServletUtils.getLocale(req,resp);
 	ResourceBundle messages = ResourceBundle.getBundle("Messages", locale);
         req.setAttribute("nameIsValid", "is-valid");
         req.setAttribute("emailIsValid", "is-valid");
@@ -167,7 +167,7 @@ public class FormInstitutionServlet extends HttpServlet {
                 InstitutionController.insertInstitution(institution);
                 String msg = messages.getString("br.com.curriculumVSJ.Form_Institution.msg.success");
                 req.setAttribute("msgSuccess", msg);
-                req.getRequestDispatcher("/Form_Institution.jsp").forward(req, resp);
+                req.getRequestDispatcher("Form_Institution.jsp").forward(req, resp);
             }catch(Exception e) {
                 Logger lg = Logger.getLogger(FormInstitutionServlet.class);
                 lg.error("Exceção ao tentar inserir a Instituição", e);

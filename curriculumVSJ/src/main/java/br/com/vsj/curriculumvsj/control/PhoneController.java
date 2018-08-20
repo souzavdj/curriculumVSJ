@@ -30,14 +30,15 @@ public class PhoneController {
 
     public static void insertPhone(Phone phone) {
         GenericDAO<Phone> phoneDAO = PersistenceManager.createGenericDAO(Phone.class);
-        PersistenceManager.getTransaction().begin();
         try {
+            PersistenceManager.getTransaction().begin();
             phoneDAO.insert(phone);
             PersistenceManager.getTransaction().commit();
         } catch (Exception e) {
             Logger lg = Logger.getLogger(PhoneController.class);
             lg.error("Exceção ao tentar incluir Telefone. ", e);
             PersistenceManager.getTransaction().rollback();
+            throw e;
         }
     }
 
@@ -52,6 +53,7 @@ public class PhoneController {
             Logger lg = Logger.getLogger(Phone.class);
             lg.error("Exceção ao tentar alterar Telefone. ", e);
             PersistenceManager.getTransaction().rollback();
+            throw e;
         }
 
     }

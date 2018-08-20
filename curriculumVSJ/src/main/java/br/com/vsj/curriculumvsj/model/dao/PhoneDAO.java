@@ -6,10 +6,6 @@
 package br.com.vsj.curriculumvsj.model.dao;
 
 import br.com.vsj.curriculumvsj.model.entity.Phone;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  * Classe DAO para persistir os telefones no Banco de Dados.

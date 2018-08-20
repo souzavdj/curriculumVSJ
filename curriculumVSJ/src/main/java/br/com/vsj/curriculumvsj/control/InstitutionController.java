@@ -29,14 +29,15 @@ public class InstitutionController {
 
     public static void insertInstitution(Institution institution) {
         GenericDAO<Institution> institutionDAO = PersistenceManager.createGenericDAO(Institution.class);
-        PersistenceManager.getTransaction().begin();
         try {
+            PersistenceManager.getTransaction().begin();
             institutionDAO.insert(institution);
             PersistenceManager.getTransaction().commit();
         } catch (Exception e) {
             Logger lg = Logger.getLogger(InstitutionController.class);
             lg.error("Exceção ao tentar incluir Instituição. ", e);
             PersistenceManager.getTransaction().rollback();
+            throw e;
         }
     }
 
@@ -51,8 +52,7 @@ public class InstitutionController {
             Logger lg = Logger.getLogger(Institution.class);
             lg.error("Exceção ao tentar alterar Instituição. ", e);
             PersistenceManager.getTransaction().rollback();
+            throw e;
         }
-
     }
-    
 }

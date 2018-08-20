@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         boolean valid = true;
-        Locale locale = ServletUtils.getLocale(req);
+        Locale locale = ServletUtils.getLocale(req,resp);
 	ResourceBundle messages = ResourceBundle.getBundle("Messages", locale);
         req.setAttribute("emailIsValid", "is-valid");
         req.setAttribute("passwordIsValid", "is-valid");

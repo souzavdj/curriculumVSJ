@@ -1,9 +1,12 @@
 package br.com.vsj.curriculumvsj.utils;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.log4j.Logger;
 
 /**
  * Classe de utilidade criada para criação de metodos estaticos uteis para outras Servlets.
@@ -19,7 +22,7 @@ public class ServletUtils {
      * @return Locale localização do usuário ou selecionado pela página
      * @throws ServletException caso a Locale não seja encontrada
      */
-    public static Locale getLocale(HttpServletRequest request) throws ServletException {
+    public static Locale getLocale(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Locale locale = null;
 
         Object localeFound = request.getParameter("lang");
@@ -37,7 +40,12 @@ public class ServletUtils {
             String[] parts = ((String) localeFound).split("_");
             locale = new Locale(parts[0], parts[1].toUpperCase());
         } else {
-            throw new ServletException("Locale not found!!!");
+            Logger lg = Logger.getLogger(ServletUtils.class);
+            lg.error("Exceção ao tentar o Locale", new ServletException("Locale not found!!!"));
+            request.setAttribute("error", new ServletException("Locale not found!!!").toString());
+            request.setAttribute("msgError", new ServletException("Locale not found!!!").getStackTrace());
+            request.getRequestDispatcher("Error.jsp").forward(request, response);
+            //throw new ServletException("Locale not found!!!");
         }
         return locale;
     }
