@@ -7,6 +7,7 @@ package br.com.vsj.curriculumvsj.model.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,16 +38,15 @@ public class Institution implements Serializable {
     @Column(nullable = false)
     private String email;
     
-    @OneToOne(mappedBy = "institution")
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
     
-    @Column(nullable = false)
-    @OneToMany(mappedBy = "institution")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "institution")
     private List<Phone> phones;
 
     public Institution() {
     }
-
+    
     public Institution(String name, String department, String email, Address address, List<Phone> phones) {
         this.name = name;
         this.department = department;

@@ -8,10 +8,8 @@ package br.com.vsj.curriculumvsj.model.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 /**
  * Classe modelo para os endereços.
@@ -51,9 +49,6 @@ public class Address implements Serializable {
     @Column(nullable = false)
     private String country;
     
-    @OneToOne(fetch = FetchType.EAGER)
-    private Institution institution;
-
     public Address() {
     }
 
@@ -139,5 +134,5 @@ public class Address implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
-    
+
 }

@@ -19,10 +19,9 @@
             <hr>
             <br>
             <div class="text-center alert alert-success" role="alert">
-                ${ msgSuccess }
+                <h3>${ msgSuccess }</h3>
             </div>
-            <br>
-            <hr>
+            
         </core:if>
         <form class="text-center border border-light p-5" action="FormInstitutionServlet" method="POST">
             

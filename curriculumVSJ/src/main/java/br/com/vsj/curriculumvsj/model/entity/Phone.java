@@ -6,6 +6,7 @@
 package br.com.vsj.curriculumvsj.model.entity;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,14 +31,16 @@ public class Phone implements Serializable {
     @Column(nullable = false) 
     private String number;
     
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Institution institution;
+    
+    public Phone() {
+    }
     
     public Phone(String number) {
         this.number = number;
     }
 
-    
     public int getId() {
         return id;
     }
@@ -52,6 +55,14 @@ public class Phone implements Serializable {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public Institution getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(Institution institution) {
+        this.institution = institution;
     }
     
 }

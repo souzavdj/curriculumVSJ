@@ -5,16 +5,13 @@
  */
 package br.com.vsj.curriculumvsj.view;
 
-import br.com.vsj.curriculumvsj.control.AddressController;
 import br.com.vsj.curriculumvsj.control.InstitutionController;
-import br.com.vsj.curriculumvsj.control.PhoneController;
 import br.com.vsj.curriculumvsj.model.entity.Address;
 import br.com.vsj.curriculumvsj.model.entity.Institution;
 import br.com.vsj.curriculumvsj.model.entity.Phone;
 import br.com.vsj.curriculumvsj.utils.ServletUtils;
 import br.com.vsj.curriculumvsj.utils.ValidUtils;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -36,6 +33,7 @@ public class FormInstitutionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         String department = req.getParameter("department");
@@ -164,11 +162,12 @@ public class FormInstitutionServlet extends HttpServlet {
             Phone phoneClass = new Phone(phone);
             phones.add(phoneClass);
             Institution institution = new Institution(name, department, email, address, phones);
+            phoneClass.setInstitution(institution);
             try{
-                PhoneController.insertPhone(phoneClass);
+                InstitutionController.insertInstitution(institution);
                 String msg = messages.getString("br.com.curriculumVSJ.Form_Institution.msg.success");
                 req.setAttribute("msgSuccess", msg);
-                req.getRequestDispatcher("/Form_Institution.jsp").forward(req, resp);			
+                req.getRequestDispatcher("/Form_Institution.jsp").forward(req, resp);
             }catch(Exception e) {
                 Logger lg = Logger.getLogger(FormInstitutionServlet.class);
                 lg.error("Exceção ao tentar inserir a Instituição", e);
@@ -176,7 +175,6 @@ public class FormInstitutionServlet extends HttpServlet {
                 req.setAttribute("msgError", e.getStackTrace());
                 req.getRequestDispatcher("Error.jsp").forward(req, resp);			
             }
-            req.getRequestDispatcher("HomePage.jsp").forward(req, resp);
         }else {
             req.getRequestDispatcher("Form_Institution.jsp").forward(req, resp);
         }

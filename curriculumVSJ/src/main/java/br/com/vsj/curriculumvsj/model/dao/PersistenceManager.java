@@ -13,19 +13,19 @@ import javax.persistence.Persistence;
  */
 public class PersistenceManager {
 
-    private static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("curriculumVSJPU");
-    private static final EntityManager MANAGER = FACTORY.createEntityManager();
+    private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("curriculumVSJPU");
+    private static EntityManager manager = factory.createEntityManager();
 
     public static EntityManager getEntityManager() {
-        return MANAGER;
+        return manager;
     }
 
     public static <T> GenericDAO<T> createGenericDAO(Class<T> t) {
-        return new GenericDAO<T>(t, MANAGER);
+        return new GenericDAO<T>(t, manager);
     }
 
     public static EntityTransaction getTransaction() {
-        return MANAGER.getTransaction();
+        return manager.getTransaction();
     }
 
 }
