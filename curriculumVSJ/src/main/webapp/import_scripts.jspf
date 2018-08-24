@@ -1,0 +1,21 @@
+<script>
+    
+    function searchZipCode(){
+        $.ajax({
+            type: 'GET',
+            url: 'SearchZipCodeServlet', //Servlet
+            async: true, // habilita a função ajax() repassar os dados para a função pai
+            data: $('#zipCode').serialize(),
+            dataType: "json",
+            success: function(json){
+                $("#street").val(json.street);
+                $("#neighborhood").val(json.neighborhood);
+                $("#city").val(json.city);
+                $("#state").val(json.state);
+                $("#country").val(json.country);
+            }
+        });
+       
+    }
+    
+</script>

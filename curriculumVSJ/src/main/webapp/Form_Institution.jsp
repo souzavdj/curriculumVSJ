@@ -19,10 +19,11 @@
             <hr>
             <br>
             <div class="text-center alert alert-success" role="alert">
-                <h3>${ msgSuccess }</h3>
+                <h3>${ requestScope.msgSuccess }</h3>
             </div>
             
         </core:if>
+            
         <form class="text-center border border-light p-5" action="FormInstitutionServlet" method="POST">
             
             <div align="center">
@@ -52,77 +53,80 @@
                     <hr>
                     <p class="text-center"><b><fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address"/></b></p>
                 </div>
-                <div class="form-row mb-4 col-md-5">
-                    <div class="col">
-                        <!-- Zip Code -->
-                        <input type="text" id="defaultRegisterFormZipCode" name="zipCode" value="${param.zipCode}" class="form-control ${requestScope.zipCodeIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.zipcode"/>">
-                        <div class="invalid-feedback">
-                            ${requestScope.zipCodeMsgError}
+                    <div class="form-row mb-4 col-md-5">
+                        <div class="col input-group">
+                            <!-- Zip Code -->
+                            <input type="text" id="zipCode" name="zipCode" value="${param.zipCode}" class="form-control ${requestScope.zipCodeIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.zipcode"/>">
+                            <span class="input-group-btn"> 
+                                <button type="button" class="btn btn-info btn-block form-control" name="btnSearchZipCode" onclick="javascript:searchZipCode()"><fmt:message key = "br.com.curriculumVSJ.Form_Institution.button.search"/></button>
+                            </span>
+                            <div class="invalid-feedback">
+                                ${requestScope.zipCodeMsgError}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <!-- Street -->
+                            <input type="text" id="street" name="street" value="${ param.street }" class="form-control ${requestScope.streetIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.street"/>">    
+                            <div class="invalid-feedback">
+                                ${requestScope.streetMsgError}
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <!-- Street -->
-                        <input type="text" id="defaultRegisterFormStreet" name="street" value="${param.street}" class="form-control ${requestScope.streetIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.street"/>">    
-                        <div class="invalid-feedback">
-                            ${requestScope.streetMsgError}
+                    <div class="form-row mb-4 col-md-5">
+                        <div class="col">
+                            <!-- Number -->
+                            <input type="text" id="number" name="number" value="${param.number}" class="form-control ${requestScope.numberIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.number"/>">
+                            <div class="invalid-feedback">
+                                ${requestScope.numberMsgError}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <!-- Complement -->
+                            <input type="text" id="complement" name="complement" value="${param.complement}" class="form-control ${requestScope.complementIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.complement"/>">
+                            <div class="invalid-feedback">
+                                ${requestScope.complementMsgError}
+                            </div>
+                            <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted">
+                                <fmt:message key="br.com.curriculumVSJ.Form_Institution.label.optional"/>
+                            </small>
                         </div>
                     </div>
-                </div>
-                <div class="form-row mb-4 col-md-5">
-                    <div class="col">
-                        <!-- Number -->
-                        <input type="text" id="defaultRegisterFormNumber" name="number" value="${param.number}" class="form-control ${requestScope.numberIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.number"/>">
-                        <div class="invalid-feedback">
-                            ${requestScope.numberMsgError}
+                    <div class="form-row mb-4 col-md-5">
+                        <div class="col">
+                            <!-- Neighborhood -->
+                            <input type="text" id="neighborhood" name="neighborhood" value="${neighborhood}" class="form-control ${requestScope.neighborhoodIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.neighborhood"/>">
+                            <div class="invalid-feedback">
+                                ${requestScope.neighborhoodMsgError}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <!-- City -->
+                            <input type="text" id="city" name="city" value="${param.city}" class="form-control ${requestScope.cityIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.city"/>">
+                            <div class="invalid-feedback">
+                                ${requestScope.cityMsgError}
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <!-- Complement -->
-                        <input type="text" id="defaultRegisterFormComplement" name="complement" value="${param.complement}" class="form-control ${requestScope.complementIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.complement"/>">
-                        <div class="invalid-feedback">
-                            ${requestScope.complementMsgError}
+                    <div class="form-row mb-4 col-md-5">
+                        <div class="col">
+                            <!-- State -->
+                            <input type="text" id="state" name="state" value="${param.state}" class="form-control ${requestScope.stateIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.stage"/>">
+                            <div class="invalid-feedback">
+                                ${requestScope.stateMsgError}
+                            </div>
                         </div>
-                        <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted">
-                            <fmt:message key="br.com.curriculumVSJ.Form_Institution.label.optional"/>
-                        </small>
-                    </div>
-                </div>
-                <div class="form-row mb-4 col-md-5">
-                    <div class="col">
-                        <!-- Neighborhood -->
-                        <input type="text" id="defaultRegisterFormNeighborhood" name="neighborhood" value="${param.neighborhood}" class="form-control ${requestScope.neighborhoodIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.neighborhood"/>">
-                        <div class="invalid-feedback">
-                            ${requestScope.neighborhoodMsgError}
+                        <div class="col">
+                            <!-- Country -->
+                            <input type="text" id="country" name="country" value="${param.country}" class="form-control ${requestScope.countryIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.country"/>">
+                            <div class="invalid-feedback">
+                                ${requestScope.countryMsgError}
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <!-- City -->
-                        <input type="text" id="defaultRegisterFormCity" name="city" value="${param.city}" class="form-control ${requestScope.cityIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.city"/>">
-                        <div class="invalid-feedback">
-                            ${requestScope.cityMsgError}
-                        </div>
+                    <div class="mb-4 col-md-5">
+                        <br>
+                        <hr>
                     </div>
-                </div>
-                <div class="form-row mb-4 col-md-5">
-                    <div class="col">
-                        <!-- Stage -->
-                        <input type="text" id="defaultRegisterFormStage" name="stage" value="${param.stage}" class="form-control ${requestScope.stageIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.stage"/>">
-                        <div class="invalid-feedback">
-                            ${requestScope.stageMsgError}
-                        </div>
-                    </div>
-                    <div class="col">
-                        <!-- Country -->
-                        <input type="text" id="defaultRegisterFormContry" name="country" value="${param.country}" class="form-control ${requestScope.countryIsValid}" placeholder="<fmt:message key="br.com.curriculumVSJ.Form_Institution.label.address.country"/>">
-                        <div class="invalid-feedback">
-                            ${requestScope.countryMsgError}
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-4 col-md-5">
-                    <br>
-                    <hr>
-                </div>
                 <div class="form-row mb-4 col-md-5">    
                     <div class="col">
                         <!-- Sign up button -->
@@ -135,8 +139,9 @@
                 </div>
             </div>
         </form>
-        
+        <script src="node_modules/js/jquery.min.js" ></script>
         <%@include file="import_footer.jspf"%>
         <%@include file="import_finalbodyscripts.jspf"%>
+        <%@include file="import_scripts.jspf"%>
     </body>
 </html>

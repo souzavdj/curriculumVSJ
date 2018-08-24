@@ -33,13 +33,14 @@
                         ${requestScope.passwordMsgError}
                     </div>
                 </div>
-                <!-- Login button -->
-                <button class="btn btn-info btn-block my-10 col-md-5" type="submit"><fmt:message key="br.com.curriculumVSJ.Login.button.login"/></button>
+                <div class="col-md-5">
+                    <!-- Login button -->
+                    <button class="btn btn-info btn-block" type="submit"><fmt:message key="br.com.curriculumVSJ.Login.button.login"/></button>
+                </div>
             </div>
-            
         </form>
         <!-- Default form login -->
-        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
         <%@include file="import_footer.jspf"%>
         <%@include file="import_finalbodyscripts.jspf"%>
     </body>

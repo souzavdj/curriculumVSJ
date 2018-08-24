@@ -34,19 +34,19 @@ public class FormInstitutionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        String name = req.getParameter("name");
-        String email = req.getParameter("email");
-        String department = req.getParameter("department");
-        String phone = req.getParameter("phone");
+        String name = req.getParameter("name").toUpperCase().trim();
+        String email = req.getParameter("email").toUpperCase().trim();
+        String department = req.getParameter("department").toUpperCase().trim();
+        String phone = req.getParameter("phone").toUpperCase().trim();
         //Address
-        String zipCode = req.getParameter("zipCode");
-        String street = req.getParameter("street");
-        String number = req.getParameter("number");
-        String complement = req.getParameter("complement");
-        String neighborhood = req.getParameter("neighborhood");
-        String city = req.getParameter("city");
-        String stage = req.getParameter("stage");
-        String country = req.getParameter("country");
+        String zipCode = req.getParameter("zipCode").toUpperCase().trim();
+        String street = req.getParameter("street").toUpperCase().trim();
+        String number = req.getParameter("number").toUpperCase().trim();
+        String complement = req.getParameter("complement").toUpperCase().trim();
+        String neighborhood = req.getParameter("neighborhood").toUpperCase().trim();
+        String city = req.getParameter("city").toUpperCase().trim();
+        String state = req.getParameter("state").toUpperCase().trim();
+        String country = req.getParameter("country").toUpperCase().trim();
         boolean valid = true;
         Locale locale = ServletUtils.getLocale(req,resp);
 	ResourceBundle messages = ResourceBundle.getBundle("Messages", locale);
@@ -60,7 +60,7 @@ public class FormInstitutionServlet extends HttpServlet {
         req.setAttribute("complementIsValid", "is-valid");
         req.setAttribute("neighborhoodIsValid", "is-valid");
         req.setAttribute("cityIsValid", "is-valid");
-        req.setAttribute("stageIsValid", "is-valid");
+        req.setAttribute("stateIsValid", "is-valid");
         req.setAttribute("countryIsValid", "is-valid");
         
         //Validação Nome
@@ -143,10 +143,10 @@ public class FormInstitutionServlet extends HttpServlet {
         }
         
         //Validação Estado
-        if(!ValidUtils.validFieldEmpty(stage)) {
+        if(!ValidUtils.validFieldEmpty(state)) {
             valid = false;
-            req.setAttribute("stageIsValid", "is-invalid");
-            req.setAttribute("stageMsgError", messages.getString("br.com.curriculumVSJ.Form_Institution.label.stage.inValid"));
+            req.setAttribute("stateIsValid", "is-invalid");
+            req.setAttribute("stateMsgError", messages.getString("br.com.curriculumVSJ.Form_Institution.label.stage.inValid"));
         }
         
         //Validação País
@@ -157,7 +157,7 @@ public class FormInstitutionServlet extends HttpServlet {
         }
         
         if (valid) {
-            Address address = new Address(zipCode, Integer.parseInt(number), street, complement, neighborhood, city, stage, country);
+            Address address = new Address(zipCode, Integer.parseInt(number), street, complement, neighborhood, city, state, country);
             List<Phone> phones = new ArrayList();
             Phone phoneClass = new Phone(phone);
             phones.add(phoneClass);

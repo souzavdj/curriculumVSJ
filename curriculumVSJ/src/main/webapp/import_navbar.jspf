@@ -18,7 +18,7 @@
         </core:when>
         <core:otherwise>
             <a class="navbar-brand" href="HomePage.jsp">
-                <img src ="Imagens/eu.jpeg" width="100px" height="100px" alt=""/>
+                <img src ="Files/Imagens/eu.jpeg" width="100px" height="100px" alt=""/>
             </a>
         </core:otherwise>
     </core:choose>
