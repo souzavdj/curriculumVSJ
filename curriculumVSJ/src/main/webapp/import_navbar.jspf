@@ -9,7 +9,7 @@
         <core:when test="${sessionScope.login}">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src ="Imagens/eu.jpeg" width="100px" height="100px" alt=""/></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src ="Files/Imagens/eu.jpeg" width="100px" height="100px" alt=""/></a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="LoginServlet?logout=true"><fmt:message key="br.com.curriculumVSJ.Login.button.logout"/></a>
                     </div>
@@ -18,7 +18,7 @@
         </core:when>
         <core:otherwise>
             <a class="navbar-brand" href="HomePage.jsp">
-                <img src ="Files/Imagens/eu.jpeg" width="100px" height="100px" alt=""/>
+                <img src ="Files/Imagens/user.png" width="100px" height="100px" alt=""/>
             </a>
         </core:otherwise>
     </core:choose>

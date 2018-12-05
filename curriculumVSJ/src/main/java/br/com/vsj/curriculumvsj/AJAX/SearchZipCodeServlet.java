@@ -30,7 +30,6 @@ public class SearchZipCodeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json;charset=UTF-8");
         String zipCode = req.getParameter("zipCode");
-        System.out.println("O cep: "+zipCode);
         Address address = new Address();
         try {
             address = SearcherAddress.getAddressByZipCode(zipCode);
