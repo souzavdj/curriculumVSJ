@@ -46,7 +46,7 @@ public class ValidUtils {
     
     public static boolean validFieldEmpty (String field) {
         boolean valid = false;
-        if (!field.isEmpty()) {
+        if (field != null && !field.isEmpty() && field.trim() != "") {
             valid = true;
         }
         return valid;
@@ -72,5 +72,37 @@ public class ValidUtils {
             valid = false;
         }
         return valid;
+    }
+    
+    public static boolean validZipCodeSize (String zipCode) {
+        boolean valid = false;
+        if (zipCode.length() == 8) {
+            valid = true;
+        }
+        return valid;
+    }
+    
+    public static boolean validMaxLengthString (String param) {
+        if (param.length() < 255) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+    public static boolean validMaxLengthPhone (String phone) {
+        if (phone.length() < 12) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+    public static boolean validMaxLengthNumberAddress (String number) {
+        if (number.length() < 9) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }

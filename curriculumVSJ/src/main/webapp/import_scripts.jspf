@@ -13,9 +13,25 @@
                 $("#city").val(json.city);
                 $("#state").val(json.state);
                 $("#country").val(json.country);
+                if (json.zipCodeIsValid === "is-invalid") {
+                    var zipCode = document.getElementById("zipCode");
+                    zipCode.classList.add("is-invalid");
+                    document.getElementById("zipCodeMsgError").innerHTML = json.zipCodeMsgError;
+                }else {
+                    var zipCode = document.getElementById("zipCode");
+                    zipCode.classList.remove("is-invalid");
+                    zipCode.classList.add("is-valid");
+                    document.getElementById("zipCodeMsgError").innerHTML = "";
+                }
             }
         });
        
     }
+    
+    $(document).ready(function () {
+        $('#phoneInstitution').mask('(99)99999-9999');
+        $('#zipCode').mask('99999-999');
+        $('#number').mask('99999999');        
+    });
     
 </script>

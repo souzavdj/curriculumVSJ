@@ -1,6 +1,7 @@
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- SCRIPTS -->
+    <script src="node_modules/js/jquery.min.js" ></script>
     <!-- JQuery -->
     <script type="text/javascript" src="node_modules/bootstrap/js/jquery-3.3.1.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -9,3 +10,7 @@
     <script type="text/javascript" src="node_modules/bootstrap/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="node_modules/bootstrap/js/mdb.min.js"></script>
+    <!-- jquery plugin -->
+    <script src="node_modules/jquery/dist/jquery.min.js" ></script>
+    <!-- plugin para função mask do jquery -->
+    <script src="node_modules/jquery-mask-plugin/dist/jquery.mask.min.js" ></script>
